@@ -91,7 +91,7 @@
       "status": "scheduled",
       "category": "Web Development",
       "description": "Bring a small idea and leave with a working component, plus a few new collaborators.",
-      "participants": 9,
+      "participants": 10,
       "capacity": 12,
       "hostInitials": "AS",
       "meetLink": "https://meet.google.com/vzj-xzef-dnd"
@@ -147,6 +147,13 @@
       "email": "poorneshpoorna12@gmail.com",
       "passwordHash": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
       "createdAt": "2026-09-19T04:25:31.979Z"
+    },
+    {
+      "id": 1789816730037,
+      "name": "mm",
+      "email": "manoharmanuumesh@gmail.com",
+      "passwordHash": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+      "createdAt": "2026-09-19T11:18:50.037Z"
     }
   ]
 }

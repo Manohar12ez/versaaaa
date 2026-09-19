@@ -1,5 +1,94 @@
 (function () {
     const API_BASE = 'http://localhost:5000/api';
+    const JAVA_MEETING_URL = 'https://meet.google.com/uyv-hfdu-fnk';
+
+    function currentUser() {
+        try {
+            return JSON.parse(localStorage.getItem('skillswapUser'));
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function showAuthMessage(message, isError = false) {
+        const authMessage = document.getElementById('authMessage');
+        if (!authMessage) return;
+
+        authMessage.textContent = message;
+        authMessage.className = `auth-message ${isError ? 'error' : 'success'}`;
+    }
+
+    function setupAuth() {
+        const authForm = document.getElementById('authForm');
+
+        if (!authForm) {
+            if (!currentUser()) window.location.href = 'auth.html';
+            return;
+        }
+
+        if (currentUser()) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        let signupMode = false;
+        const nameField = document.getElementById('nameField');
+        const nameInput = document.getElementById('nameInput');
+        const authTitle = document.getElementById('authTitle');
+        const submitButton = document.getElementById('authSubmitBtn');
+        const toggleText = document.getElementById('toggleText');
+        const toggleLink = document.getElementById('toggleAuthMode');
+
+        toggleLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            signupMode = !signupMode;
+            nameField.style.display = signupMode ? 'block' : 'none';
+            nameInput.required = signupMode;
+            authTitle.textContent = signupMode ? 'Create account' : 'Login';
+            submitButton.textContent = signupMode ? 'Create account' : 'Login';
+            toggleText.textContent = signupMode ? 'Already a member?' : 'New here?';
+            toggleLink.textContent = signupMode ? 'Login' : 'Create account';
+            showAuthMessage('');
+        });
+
+        authForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            submitButton.disabled = true;
+            showAuthMessage('Checking your details...');
+
+            const payload = {
+                email: document.getElementById('emailInput').value,
+                password: document.getElementById('passwordInput').value
+            };
+
+            if (signupMode) payload.name = nameInput.value;
+
+            try {
+                const response = await fetch(`${API_BASE}/auth/${signupMode ? 'signup' : 'login'}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await response.json();
+
+                if (!response.ok) throw new Error(data.message || 'Unable to authenticate.');
+
+                localStorage.setItem('skillswapUser', JSON.stringify(data.user));
+                window.location.href = 'index.html';
+            } catch (error) {
+                const message = error instanceof TypeError
+                    ? 'Cannot connect to SkillSwap. Start the backend, then open http://localhost:5000/auth.html.'
+                    : error.message;
+                showAuthMessage(message, true);
+                submitButton.disabled = false;
+            }
+        });
+    }
+
+    function logout() {
+        localStorage.removeItem('skillswapUser');
+        window.location.href = 'auth.html';
+    }
 
     function requestSkill(skill) {
         fetch(`${API_BASE}/skills/request`, {
@@ -34,6 +123,16 @@
             .catch(() => {
                 alert('Joining Java session...');
             });
+    }
+
+    function startJavaMeeting(sessionId = 1) {
+        fetch(`${API_BASE}/sessions/join`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ sessionId })
+        }).catch(() => null);
+
+        window.location.href = JAVA_MEETING_URL;
     }
 
     function acceptSession(sessionId = 2) {
@@ -198,8 +297,8 @@
                                 ${session.status === 'scheduled' ? 'Scheduled' : 'Pending'}
                             </span>
                         </p>
-                        <button onclick="${session.status === 'scheduled' ? 'joinSession(' + session.id + ')' : 'acceptSession(' + session.id + ')'}">
-                            ${session.status === 'scheduled' ? 'Join Session' : 'Accept'}
+                        <button onclick="${session.title === 'Java Foundations' ? 'startJavaMeeting(' + session.id + ')' : session.status === 'scheduled' ? 'joinSession(' + session.id + ')' : 'acceptSession(' + session.id + ')'}">
+                            ${session.title === 'Java Foundations' ? 'Start Java meeting' : session.status === 'scheduled' ? 'Join Session' : 'Accept'}
                         </button>
                     </div>
                 `).join('');
@@ -218,6 +317,12 @@
     }
 
     document.addEventListener('DOMContentLoaded', function () {
+        setupAuth();
+        const logoutButton = document.getElementById('logoutBtn');
+        if (logoutButton) logoutButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            logout();
+        });
         populateProfile();
         populateDashboard();
         loadSkills();
@@ -226,6 +331,7 @@
 
     window.requestSkill = requestSkill;
     window.joinSession = joinSession;
+    window.startJavaMeeting = startJavaMeeting;
     window.acceptSession = acceptSession;
     window.viewSession = viewSession;
     window.searchSkills = searchSkills;
