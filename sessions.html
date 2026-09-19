@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Sessions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>SkillSwap</h2>
+
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="sessions.html">Sessions</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h1>My Sessions</h1>
+
+        <div class="session-card">
+
+            <h2>Java</h2>
+
+            <p><strong>With:</strong> Rahul</p>
+
+            <p><strong>Time:</strong> Tomorrow, 5:00 PM</p>
+
+            <p>
+                <strong>Status:</strong>
+                <span class="status scheduled">Scheduled</span>
+            </p>
+
+            <button onclick="joinSession()">Join Session</button>
+
+        </div>
+
+        <div class="session-card">
+
+            <h2>React</h2>
+
+            <p><strong>With:</strong> Arjun</p>
+
+            <p><strong>Time:</strong> Sunday, 3:00 PM</p>
+
+            <p>
+                <strong>Status:</strong>
+                <span class="status pending">Pending</span>
+            </p>
+
+            <button onclick="acceptSession()">Accept</button>
+
+        </div>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
