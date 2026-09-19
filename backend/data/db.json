@@ -1,0 +1,152 @@
+{
+  "profile": {
+    "name": "Poornesh gowda",
+    "email": "poorneshpoora12@gmail.com",
+    "tokenBalance": 250,
+    "skills": [
+      "C",
+      "Python",
+      "node.js"
+    ],
+    "skillRequests": [
+      {
+        "skill": "React",
+        "requestedAt": "2026-09-19T10:00:00.000Z"
+      },
+      {
+        "skill": "Java",
+        "requestedAt": "2026-09-19T04:16:58.332Z"
+      },
+      {
+        "skill": "Public Speaking",
+        "requestedAt": "2026-09-19T04:26:18.225Z"
+      },
+      {
+        "skill": "Cybersecurity",
+        "requestedAt": "2026-09-19T04:37:35.212Z"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "C",
+      "category": "Programming"
+    },
+    {
+      "id": 2,
+      "name": "Python",
+      "category": "Programming"
+    },
+    {
+      "id": 3,
+      "name": "node.js",
+      "category": "Web Development"
+    },
+    {
+      "id": 4,
+      "name": "React",
+      "category": "Web Development"
+    },
+    {
+      "id": 5,
+      "name": "UI/UX Design",
+      "category": "Design"
+    },
+    {
+      "id": 6,
+      "name": "Cybersecurity",
+      "category": "Security"
+    },
+    {
+      "id": 7,
+      "name": "Public Speaking",
+      "category": "Communication"
+    },
+    {
+      "id": 8,
+      "name": "Data Structures",
+      "category": "Programming"
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "title": "Java Foundations",
+      "with": "Rahul",
+      "time": "Tomorrow, 5:00 PM",
+      "status": "scheduled",
+      "category": "Programming",
+      "description": "A friendly, hands-on room for anyone ready to make Java feel less intimidating.",
+      "participants": 18,
+      "capacity": 18,
+      "hostInitials": "RK",
+      "meetLink": "https://meet.google.com/yri-zazw-csg"
+    },
+    {
+      "id": 2,
+      "title": "React Build Club",
+      "with": "Arjun",
+      "time": "Sunday, 3:00 PM",
+      "status": "scheduled",
+      "category": "Web Development",
+      "description": "Bring a small idea and leave with a working component, plus a few new collaborators.",
+      "participants": 9,
+      "capacity": 12,
+      "hostInitials": "AS",
+      "meetLink": "https://meet.google.com/vzj-xzef-dnd"
+    },
+    {
+      "id": 3,
+      "title": "Design Better Interfaces",
+      "with": "Nisha",
+      "time": "Tuesday, 7:30 PM",
+      "status": "scheduled",
+      "category": "Design",
+      "description": "Swap practical UI feedback and learn how small decisions make products easier to use.",
+      "participants": 11,
+      "capacity": 20,
+      "hostInitials": "NP"
+    },
+    {
+      "id": 4,
+      "title": "Python for Real Life",
+      "with": "Vikram",
+      "time": "Wednesday, 6:00 PM",
+      "status": "pending",
+      "category": "Programming",
+      "description": "Build a tiny automation together and discover how much busywork code can remove.",
+      "participants": 6,
+      "capacity": 15,
+      "hostInitials": "VK"
+    },
+    {
+      "id": 5,
+      "title": "Speak With Confidence",
+      "with": "Meera",
+      "time": "Friday, 5:30 PM",
+      "status": "scheduled",
+      "category": "Communication",
+      "description": "A relaxed practice room for presentations, interviews, and telling your story clearly.",
+      "participants": 9,
+      "capacity": 16,
+      "hostInitials": "MS"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Aditya.M",
+      "email": "aditya777@gmail.coml",
+      "passwordHash": "123456789",
+      "createdAt": "2026-09-19T10:00:00.000Z"
+    },
+    {
+      "id": 1789791931979,
+      "name": "pooo",
+      "email": "poorneshpoorna12@gmail.com",
+      "passwordHash": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+      "createdAt": "2026-09-19T04:25:31.979Z"
+    }
+  ]
+}

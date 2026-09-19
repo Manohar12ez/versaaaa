@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Sessions</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>SkillSwap</h2>
+
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="sessions.html">Sessions</a>
+            <a href="profile.html">Profile</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container sessions-page">
+        <section class="page-intro">
+            <p class="eyebrow">THE COMMUNITY CALENDAR</p>
+            <h1>Find your next<br><span>good conversation.</span></h1>
+            <p class="subtitle">Every room is open to the community. Drop in, learn something, and meet people who are building too.</p>
+        </section>
+        <div class="session-toolbar">
+            <div class="filter-pills" role="group" aria-label="Filter sessions">
+                <button class="filter-pill active" data-filter="all">All rooms</button>
+                <button class="filter-pill" data-filter="scheduled">Starting soon</button>
+                <button class="filter-pill" data-filter="pending">Needs people</button>
+            </div>
+            <span id="sessionCount" class="session-count">Loading rooms...</span>
+        </div>
+        <div id="sessionsList" class="session-grid"></div>
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

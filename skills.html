@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Skills</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>SkillSwap</h2>
+
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="sessions.html">Sessions</a>
+            <a href="profile.html">Profile</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <h1>Explore Skills</h1>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for a skill..."
+            onkeyup="searchSkills()"
+        >
+
+        <div id="skillContainer" class="card-grid">
+
+            <div class="skill-card">
+                <h3>Java</h3>
+                <p>Programming</p>
+                <button onclick="requestSkill('Java')">Learn</button>
+            </div>
+
+            <div class="skill-card">
+                <h3>Python</h3>
+                <p>Programming</p>
+                <button onclick="requestSkill('Python')">Learn</button>
+            </div>
+
+            <div class="skill-card">
+                <h3>React</h3>
+                <p>Web Development</p>
+                <button onclick="requestSkill('React')">Learn</button>
+            </div>
+
+            <div class="skill-card">
+                <h3>UI/UX Design</h3>
+                <p>Design</p>
+                <button onclick="requestSkill('UI/UX Design')">Learn</button>
+            </div>
+
+            <div class="skill-card">
+                <h3>Cybersecurity</h3>
+                <p>Security</p>
+                <button onclick="requestSkill('Cybersecurity')">Learn</button>
+            </div>
+
+            <div class="skill-card">
+                <h3>Web Development</h3>
+                <p>Development</p>
+                <button onclick="requestSkill('Web Development')">Learn</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

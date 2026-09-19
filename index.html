@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <h2>SkillSwap</h2>
+
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="sessions.html">Sessions</a>
+            <a href="profile.html">Profile</a>
+            <a href="#" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container dashboard-page">
+        <section class="welcome-panel">
+            <div>
+                <p class="eyebrow">YOUR LEARNING COMMUNITY</p>
+                <h1>Learn out loud.<br><span>Grow together.</span></h1>
+                <p class="hero-copy">Trade what you know, find your people, and join live skill sessions built for curious minds.</p>
+                <div class="hero-actions">
+                    <a class="button button-light" href="sessions.html">Explore sessions</a>
+                    <a class="text-link" href="skills.html">Browse all skills <span aria-hidden="true">-&gt;</span></a>
+                </div>
+            </div>
+            <div class="hero-orbit" aria-hidden="true">
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit-core">SS</div>
+                <span class="orbit-label label-one">CODE</span>
+                <span class="orbit-label label-two">DESIGN</span>
+                <span class="orbit-label label-three">PEOPLE</span>
+            </div>
+        </section>
+
+        <section class="stats-grid" aria-label="Community overview">
+            <article class="stat-card stat-coral"><span class="stat-icon">+</span><strong id="communityMembers">24</strong><p>active members</p></article>
+            <article class="stat-card stat-teal"><span class="stat-icon">*</span><strong id="liveSessions">6</strong><p>sessions this week</p></article>
+            <article class="stat-card stat-yellow"><span class="stat-icon">$</span><strong id="tokenBalance">--</strong><p>tokens to spend</p></article>
+        </section>
+
+        <div class="section-heading">
+            <div><p class="eyebrow">FIND YOUR NEXT ROOM</p><h2>Sessions people are joining</h2></div>
+            <a class="text-link dark-link" href="sessions.html">See all sessions <span aria-hidden="true">-&gt;</span></a>
+        </div>
+        <div id="upcomingSessions" class="session-grid dashboard-sessions"></div>
+
+        <section class="bottom-grid">
+            <article class="panel skills-panel">
+                <div class="section-heading compact-heading"><div><p class="eyebrow">YOUR TOOLKIT</p><h2>Skills you share</h2></div><a class="text-link dark-link" href="profile.html">Edit profile</a></div>
+                <div id="dashboardSkillsList" class="skills-list"></div>
+                <a class="add-skill-link" href="skills.html">+ Add another skill</a>
+            </article>
+            <article class="panel invite-panel">
+                <p class="eyebrow">MAKE AN IMPACT</p>
+                <h2>Know something useful?</h2>
+                <p>Host a small room and turn your everyday knowledge into somebody else's next breakthrough.</p>
+                <a class="button button-dark" href="sessions.html">Find a room to host</a>
+            </article>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

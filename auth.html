@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>SkillSwap</h2>
+        <div class="nav-links">
+            <a href="index.html">Dashboard</a>
+            <a href="skills.html">Skills</a>
+            <a href="sessions.html">Sessions</a>
+            <a href="profile.html">Profile</a>
+        </div>
+    </nav>
+
+    <main class="auth-container">
+        <section class="auth-card">
+            <h1 id="authTitle">Login</h1>
+            <div id="authMessage" class="auth-message"></div>
+
+            <form id="authForm" class="auth-form">
+                <div id="nameField" style="display:none;">
+                    <input type="text" id="nameInput" placeholder="Full name" />
+                </div>
+
+                <input type="email" id="emailInput" placeholder="Email" required />
+                <input type="password" id="passwordInput" placeholder="Password" required />
+
+                <button type="submit" id="authSubmitBtn">Login</button>
+            </form>
+
+            <p class="auth-link">
+                <span id="toggleText">New here?</span>
+                <a href="#" id="toggleAuthMode">Create account</a>
+            </p>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
