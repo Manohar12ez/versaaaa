@@ -37,7 +37,8 @@ const defaultDb = {
       description: 'A friendly, hands-on room for anyone ready to make Java feel less intimidating.',
       participants: 8,
       capacity: 18,
-      hostInitials: 'RK'
+      hostInitials: 'RK',
+      meetLink: 'https://meet.google.com/atn-mzcp-ijf'
     },
     {
       id: 2,

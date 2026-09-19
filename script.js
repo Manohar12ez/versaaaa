@@ -1,7 +1,5 @@
 (function () {
     const API_BASE = 'http://localhost:5000/api';
-    const JAVA_MEETING_URL = 'https://meet.google.com/uyv-hfdu-fnk';
-
     function currentUser() {
         try {
             return JSON.parse(localStorage.getItem('skillswapUser'));
@@ -125,14 +123,14 @@
             });
     }
 
-    function startJavaMeeting(sessionId = 1) {
+    function startJavaMeeting(sessionId = 1, meetingUrl = 'https://meet.google.com/atn-mzcp-ijf') {
         fetch(`${API_BASE}/sessions/join`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sessionId })
         }).catch(() => null);
 
-        window.location.href = JAVA_MEETING_URL;
+        window.open(meetingUrl, '_blank', 'noopener,noreferrer');
     }
 
     function acceptSession(sessionId = 2) {
@@ -286,22 +284,34 @@
         fetch(`${API_BASE}/sessions`)
             .then(response => response.json())
             .then(data => {
-                sessionsList.innerHTML = data.map(session => `
-                    <div class="session-card">
-                        <h2>${session.title}</h2>
-                        <p><strong>With:</strong> ${session.with}</p>
-                        <p><strong>Time:</strong> ${session.time}</p>
-                        <p>
-                            <strong>Status:</strong>
-                            <span class="status ${session.status === 'scheduled' ? 'scheduled' : 'pending'}">
-                                ${session.status === 'scheduled' ? 'Scheduled' : 'Pending'}
-                            </span>
-                        </p>
-                        <button onclick="${session.title === 'Java Foundations' ? 'startJavaMeeting(' + session.id + ')' : session.status === 'scheduled' ? 'joinSession(' + session.id + ')' : 'acceptSession(' + session.id + ')'}">
-                            ${session.title === 'Java Foundations' ? 'Start Java meeting' : session.status === 'scheduled' ? 'Join Session' : 'Accept'}
-                        </button>
-                    </div>
-                `).join('');
+                sessionsList.innerHTML = data.map(session => {
+                    const isJava = session.id === 1;
+                    const action = isJava
+                        ? `startJavaMeeting(${session.id}, '${session.meetLink || 'https://meet.google.com/atn-mzcp-ijf'}')`
+                        : session.status === 'scheduled'
+                            ? `joinSession(${session.id})`
+                            : `acceptSession(${session.id})`;
+                    const actionLabel = isJava ? 'Join Google Meet' : session.status === 'scheduled' ? 'Join Session' : 'Accept';
+                    const meetingLink = isJava && session.meetLink
+                        ? `<a class="meeting-link" href="${session.meetLink}" target="_blank" rel="noopener noreferrer">meet.google.com/${session.meetLink.split('/').pop()}</a>`
+                        : '';
+
+                    return `
+                        <article class="session-card">
+                            <div class="session-card-top">
+                                <span class="category-label">${session.category}</span>
+                                <span class="session-status ${session.status}">${session.status === 'scheduled' ? 'Scheduled' : 'Needs people'}</span>
+                            </div>
+                            <h3>${session.title}</h3>
+                            <p class="session-description">${session.description}</p>
+                            <div class="host-row"><span class="host-avatar">${session.hostInitials || 'SS'}</span><span>Hosted by ${session.with}</span></div>
+                            <div class="session-meta"><span>${session.time}</span><span>${session.participants}/${session.capacity} joined</span></div>
+                            <div class="capacity-bar"><span style="width: ${Math.min(100, (session.participants / session.capacity) * 100)}%"></span></div>
+                            ${meetingLink}
+                            <button class="join-button" onclick="${action}">${actionLabel}</button>
+                        </article>
+                    `;
+                }).join('');
             })
             .catch(() => {
                 sessionsList.innerHTML = `
